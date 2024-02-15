@@ -6,6 +6,7 @@ const cors = require('cors');
 const postCtrl = require ('./controllers/posts')
 const userCtrl = require ('./controllers/users');
 const cookieParser = require('cookie-parser');
+const { userVerification } = require('./middleware/AuthMiddleware');
 
 // Connect to MongoDB
 const connectMongo = async () => {
@@ -31,6 +32,7 @@ app.get('/api/posts', postCtrl.getPosts)
 app.get('/api/users', userCtrl.getUsers)
 app.post('/api/login', userCtrl.login)
 app.post('/api/signup', userCtrl.signup)
+app.post('/api', userVerification)
 // app.get('/api/leaderboard', leaderboardCtrl.getLeaderboard)
 // app.post('/api/add-items', itemCtrl.addItems)
 // app.post('/api/add-user-leaderboard', leaderboardCtrl.addUserLeaderboard)
