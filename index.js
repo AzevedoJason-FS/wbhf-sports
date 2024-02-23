@@ -43,7 +43,7 @@ app.get('/api/upcoming-matches', matchCtrl.getMatches)
 app.get('/api/finished-matches', matchCtrl.getFinishedMatches)
 app.get('/api/team/:teamSlug', teamCtrl.getTeam)
 app.get('/api/article/:slug', postCtrl.getSinglePost)
-app.get('/api/matches', matchCtrl.getTeamMatches)
+app.get('/api/matches/:teamId', matchCtrl.getTeamMatches)
 // app.post('/api/add-items', itemCtrl.addItems)
 // app.post('/api/add-user-leaderboard', leaderboardCtrl.addUserLeaderboard)
 

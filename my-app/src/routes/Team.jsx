@@ -7,7 +7,6 @@ import Header from "../components/Header";
 const Team = () => {
   const params = useParams();
   const url = `${config.url.API_URL}/api/team/${params.teamSlug}`;
-  const urlTeamMatches = `${config.url.API_URL}/api/matches`;
   const [team, setTeam] = React.useState({});
   const [social, setSocial] = React.useState([]);
   const [teamMatches, setTeamMatches] = React.useState([]);
@@ -19,27 +18,23 @@ const Team = () => {
         .then((res) => {
           setTeam(res.data.Team[0]);
           setSocial(res.data.Team[0].social);
-
           axios
-          .get(urlTeamMatches, { team: "65d6944f7599409be9d8abf9" })
-          .then((res) => {
-          setTeamMatches(res.data.matches);
-            console.log(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+            .get(`${config.url.API_URL}/api/matches/${res.data.Team[0]._id}`)
+            .then((res) => {
+              setTeamMatches(res.data.matches);
+              console.log(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         })
         .catch((err) => {
           console.log(err);
         });
     };
 
-
-
     getTeam();
-
-  }, [params.slug, url, urlTeamMatches]);
+  }, [params.slug, url]);
 
   return (
     <>
@@ -65,6 +60,12 @@ const Team = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="team-matches-container">
+        {teamMatches &&
+          teamMatches.map((match) => {
+            return <p>{match.sport.name}</p>;
+          })}
       </div>
     </>
   );

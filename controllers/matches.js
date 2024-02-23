@@ -3,16 +3,15 @@ const Match = require("../models/matches");
 
 const getTeamMatches = (req, res) => {
     //GET all collections
-    const team = req.body.team
+    const team = req.params.teamId
     try {
-      Match.find({ teams: team })
+      Match.find({ teams: team, status: 'finished' })
         .lean()
         .populate({ path: "sport", select: "name" })
         .populate({ path: "results", populate: { path: "team", select: "name logo" } })
         .then((result) => {
           console.log(result);
           res.status(200).json({
-            message: "Matches",
             matches: result,
           });
         })

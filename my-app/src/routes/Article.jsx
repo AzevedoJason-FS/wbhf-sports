@@ -31,7 +31,7 @@ const Article = () => {
       <div className="container">
         <Header />
         <div className="main">
-          <div style={{ width: "68%" }}>
+          <div style={{ width: "80%" }}>
             <div className="sponsor-block">
               <img src="/global-images/banner.jpeg" alt="bank" />
             </div>
