@@ -16,9 +16,26 @@ const LatestScores = () => {
     });
   }, [url]);
 
+  const sportIcon = (sport) => {
+    switch (sport) {
+      case "Football":
+        return "🏈";
+      case "Boys Soccer":
+        return "⚽";
+      case "Girls Soccer":
+        return "⚽";
+      case "Boys Basketball":
+        return "🏀";
+      case "Girls Basketball":
+        return "🏀";
+      case "Tennis":
+        return "🎾";
+    }
+  };
+
   return (
     <div className="latest-widget">
-      <div style={{maxHeight: '400px', overflow: 'auto'}} id="d">
+      <div className="latest-widget-content">
         <h2 className="sub-title" style={{ color: "#efc700", borderBottom: "1px solid #DCE0E7", paddingBottom: "4px" }}>
           Latest Scores
         </h2>
@@ -27,12 +44,14 @@ const LatestScores = () => {
             {matches &&
               matches.map((match) => {
                 return (
-                  <div>
+                  <>
                     <div className="match-date-sport">
                       <p className="match-date">
                         {new Date(match.date).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
                       </p>
-                      <p className="match-sport">{match.sport.name}</p>
+                      <p className="match-sport">
+                        {match.sport.name} {sportIcon(match.sport.name)}
+                      </p>
                     </div>
                     <div className="match-box">
                       <div className="match-team-1">
@@ -52,7 +71,7 @@ const LatestScores = () => {
                         <p>{match.results[1].team.name.replace(/ .*/, "")}</p>
                       </div>
                     </div>
-                  </div>
+                  </>
                 );
               })}
           </>

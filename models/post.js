@@ -20,7 +20,14 @@ const postSchema = mongoose.Schema({
     created_at: {
         type: Date,
         default: new Date()
-    }
+    },
+    teams:[
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "teams",
+          required: true
+        }
+      ],
 });
 
 module.exports = mongoose.model("Posts", postSchema);

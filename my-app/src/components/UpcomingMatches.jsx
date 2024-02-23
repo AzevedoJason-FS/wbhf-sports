@@ -16,9 +16,26 @@ const UpcomingScores = () => {
     });
   }, [url]);
 
+  const sportIcon = (sport) => {
+    switch (sport) {
+      case "Football":
+        return "🏈";
+      case "Boys Soccer":
+        return "⚽";
+      case "Girls Soccer":
+        return "⚽";
+      case "Boys Basketball":
+        return "🏀";
+      case "Girls Basketball":
+        return "🏀";
+      case "Tennis":
+        return "🎾";
+    }
+  };
+
   return (
     <div className="upcoming-widget" style={{ marginTop: "10px" }}>
-      <div style={{ maxHeight: "400px", overflow: "auto" }}>
+      <div className="upcoming-widget-content">
         <h2 className="sub-title" style={{ color: "#efc700", borderBottom: "1px solid #DCE0E7", paddingBottom: "4px" }}>
           Upcoming Matches
         </h2>
@@ -32,7 +49,9 @@ const UpcomingScores = () => {
                       <p className="match-date">
                         {new Date(match.date).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
                       </p>
-                      <p className="match-sport">{match.sport.name}</p>
+                      <p className="match-sport">
+                        {match.sport.name} {sportIcon(match.sport.name)}
+                      </p>
                     </div>
                     <div className="match-box">
                       <div className="match-team-1">
@@ -40,12 +59,8 @@ const UpcomingScores = () => {
                         <p>{match.results[0].team.name.replace(/ .*/, "")}</p>
                       </div>
                       <div className="match-score">
-                        <p>
-                          {match.results[0].score ? "" : "VS"}
-                        </p>
-                        <p className="match-link">
-                          {match.time}
-                        </p>
+                        <p>{match.results[0].score ? "" : "VS"}</p>
+                        <p className="match-link">{match.time}</p>
                       </div>
                       <div className="match-team-2">
                         <img src={match.results[1].team.logo} />

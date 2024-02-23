@@ -1,6 +1,7 @@
 import React from "react";
 import { config } from "../constants";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 
@@ -36,16 +37,35 @@ const Team = () => {
     getTeam();
   }, [params.slug, url]);
 
+  const sportIcon = (sport) => {
+    switch (sport) {
+      case "Football":
+        return "🏈";
+      case "Boys Soccer":
+        return "⚽";
+      case "Girls Soccer":
+        return "⚽";
+      case "Boys Basketball":
+        return "🏀";
+      case "Girls Basketball":
+        return "🏀";
+      case "Tennis":
+        return "🎾";
+    }
+  };
+
   return (
     <>
-      <Header />
+      <div className="container">
+        <Header />
+      </div>
       <div className="team-banner" id={team.slug}>
         <div className="overlay"></div>
         <div className="team-banner-content">
           <div className="team-info">
             <img src={team.logo} alt={team.name} />
             <div className="team-details">
-              <h2>{team.name}</h2>
+              <h2 className="title">{team.name}</h2>
               <p>{team.town}</p>
               <div className="team-socials">
                 {social &&
@@ -62,10 +82,53 @@ const Team = () => {
         </div>
       </div>
       <div className="team-matches-container">
-        {teamMatches &&
-          teamMatches.map((match) => {
-            return <p>{match.sport.name}</p>;
-          })}
+        <div className="team-matches">
+          <div style={{ width: "100%", background: "white", borderRadius: "10px", marginTop: "2rem", padding: "20px 20px" }}>
+            <h2 className="sub-title" style={{ color: "#efc700", borderBottom: "1px solid #DCE0E7", paddingBottom: "10px" }}>
+              Latest Scores
+            </h2>
+            {teamMatches &&
+              teamMatches.map((match) => {
+                return (
+                  <>
+                    <div style={{ display: "flex", flexDirection: "column", margin: "1rem auto 1rem auto", width: "60%" }}>
+                      <div className="match-date-sport">
+                        <p className="match-date">
+                          {new Date(match.date).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
+                        </p>
+                        <p className="match-sport">
+                          {match.sport.name} {sportIcon(match.sport.name)}
+                        </p>
+                      </div>
+                      <div className="match-box">
+                        <div className="match-team-1">
+                          <img src={match.results[0].team.logo} />
+                          <p>{match.results[0].team.name.replace(/ .*/, "")}</p>
+                        </div>
+                        <div className="match-score">
+                          <p>
+                            {match.results[0].score}-{match.results[1].score}
+                          </p>
+                          <Link to={`/`} className="match-link">
+                            Learn More
+                          </Link>
+                        </div>
+                        <div className="match-team-2">
+                          <img src={match.results[1].team.logo} />
+                          <p>{match.results[1].team.name.replace(/ .*/, "")}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
+          </div>
+          <div style={{ width: "40%", background: "white", borderRadius: "10px", marginTop: "2rem", padding: "20px 20px" }}>
+            <h2 className="sub-title" style={{ color: "#efc700", borderBottom: "1px solid #DCE0E7", paddingBottom: "10px" }}>
+              {team.name} Related News
+            </h2>
+          </div>
+        </div>
       </div>
     </>
   );

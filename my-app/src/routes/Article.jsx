@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import LatestScores from "../components/LatestScores";
 // import SocialShare from "../components/SocialShare";
-// import NewsWidget from "../components/NewsWidget";
+import NewsWidget from "../components/NewsWidget";
 
 const Article = () => {
   // Get ID from URL
@@ -31,7 +31,7 @@ const Article = () => {
       <div className="container">
         <Header />
         <div className="main">
-          <div style={{ width: "80%" }}>
+          <div style={{ width: "100%" }}>
             <div className="sponsor-block">
               <img src="/global-images/banner.jpeg" alt="bank" />
             </div>
@@ -54,10 +54,7 @@ const Article = () => {
           </div>
           <div className="right-column">
             <LatestScores />
-            <h2 className="title" style={{ marginTop: "1rem" }}>
-              Other Articles
-            </h2>
-            {/* <NewsWidget /> */}
+            <NewsWidget />
           </div>
         </div>
       </div>
