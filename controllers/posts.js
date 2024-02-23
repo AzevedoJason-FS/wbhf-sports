@@ -15,4 +15,19 @@ const getPosts = (req, res) => {
     }
 }
 
-module.exports = { getPosts }
+const getSinglePost = (req, res) => {
+    const slug = req.params.slug;
+    try {
+      Posts.find({ slug: slug })
+        .then((result) => {
+          res.status(200).json(result);
+        })
+        .catch((err) => {
+          res.status(500).json({ message: err });
+        });
+    } catch (err) {
+      res.status(500).json({ message: err });
+    }
+  };
+
+module.exports = { getPosts, getSinglePost }

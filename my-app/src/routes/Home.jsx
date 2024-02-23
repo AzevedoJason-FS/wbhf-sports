@@ -1,49 +1,27 @@
-import { React, useState, useEffect } from "react";
-// import { useNavigate } from 'react-router'
-import axios from "axios";
-import { config } from "../constants";
-// const _ = require("lodash");
-
-// // const myString = "Moto killed after Hitting bUS WAS FLEEING LAW ";
-// // const slug = _.kebabCase(myString);
+import { React } from "react";
+import Header from "../components/Header";
+import News from "../components/News";
+import LatestScores from "../components/LatestScores";
+import UpcomingScores from "../components/UpcomingMatches";
 
 const Home = () => {
-  const [posts, setPosts] = useState();
-  const url = config.url.API_URL_POSTS;
-
-  useEffect(() => {
-    axios.get(url).then((response) => {
-      setPosts(response.data);
-    });
-  }, [url]);
-
-  return(
+  return (
     <>
-      {posts && posts.length > 0 ? (
-        <div id="container">
-          {/* <Nav /> */}
-          <div className="main_leaderboard">
-            <div className="leaderboard_box">
-              <p id="leaderboard_title">Leaderboard</p>
+      <div className="container">
+        <Header />
+        <div className="main">
+          <div style={{ width: "68%" }}>
+            <div className="sponsor-block">
+              <img src="/global-images/banner.jpeg" alt="bank" />
             </div>
-            <div className="leaderboard">
-              <div className="top3">
-                {posts &&
-                  posts.map((post) => {
-                    return (
-                      <div>
-                        <p id="high_score_user">{post.title}</p>
-                        <img src={post.img} alt="tennisn"/>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
+            <News />
+          </div>
+          <div className="right-column">
+            <LatestScores />
+            <UpcomingScores />
           </div>
         </div>
-      ) : (
-       <p>nothing</p>
-      )}
+      </div>
     </>
   );
 };

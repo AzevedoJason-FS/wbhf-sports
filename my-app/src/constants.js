@@ -1,16 +1,12 @@
 const prod = {
     url: {
-     API_URL: 'https://shy-gray-spider-sock.cyclic.app/api/items',
-     API_URL_LEADERBOARD: 'https://shy-gray-spider-sock.cyclic.app/api/leaderboard',
-     API_URL_USER_LEADERBOARD: 'https://shy-gray-spider-sock.cyclic.app/api/add-user-leaderboard'
+     API_URL: 'https://shy-gray-spider-sock.cyclic.app',
     }
     }
 
 const dev = {
     url: {
-     API_URL_POSTS: 'http://localhost:8080/api/posts',
-    //  API_URL_LEADERBOARD: 'http://localhost:8080/api/leaderboard',
-    //  API_URL_USER_LEADERBOARD: 'http://localhost:8080/api/add-user-leaderboard'
+     API_URL: 'http://localhost:8080',
     }
 }
 

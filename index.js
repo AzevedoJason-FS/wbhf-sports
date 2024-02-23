@@ -5,6 +5,9 @@ require('dotenv').config();
 const cors = require('cors');
 const postCtrl = require ('./controllers/posts')
 const userCtrl = require ('./controllers/users');
+const teamCtrl = require('./controllers/teams');
+const sportCtrl = require('./controllers/sports');
+const matchCtrl = require('./controllers/matches');
 const cookieParser = require('cookie-parser');
 const { userVerification } = require('./middleware/AuthMiddleware');
 
@@ -33,7 +36,14 @@ app.get('/api/users', userCtrl.getUsers)
 app.post('/api/login', userCtrl.login)
 app.post('/api/signup', userCtrl.signup)
 app.post('/api', userVerification)
-// app.get('/api/leaderboard', leaderboardCtrl.getLeaderboard)
+app.post('/api/new-team', teamCtrl.newTeam)
+app.post('/api/new-sport', sportCtrl.newSport)
+app.post('/api/new-match', matchCtrl.newMatch)
+app.get('/api/upcoming-matches', matchCtrl.getMatches)
+app.get('/api/finished-matches', matchCtrl.getFinishedMatches)
+app.get('/api/team/:teamSlug', teamCtrl.getTeam)
+app.get('/api/article/:slug', postCtrl.getSinglePost)
+app.get('/api/matches', matchCtrl.getTeamMatches)
 // app.post('/api/add-items', itemCtrl.addItems)
 // app.post('/api/add-user-leaderboard', leaderboardCtrl.addUserLeaderboard)
 
