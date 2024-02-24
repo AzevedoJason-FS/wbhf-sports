@@ -26,7 +26,7 @@ const NewsWidget = () => {
               return (
                 <Link to={`/article/${post.slug}`} className="article-link" key={post.slug}>
                   <article className="article-widget">
-                    <div className="article-body">
+                    <div className="article-body" style={{borderBottom: '1px solid #dce0e7'}}>
                       <p className="location-box" style={{ backgroundColor: "#efc700" }}>
                         {post.location}
                       </p>

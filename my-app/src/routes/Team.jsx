@@ -56,32 +56,31 @@ const Team = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="team-matches-container">
         <Header />
-      </div>
-      <div className="team-banner" id={team.slug}>
-        <div className="overlay"></div>
-        <div className="team-banner-content">
-          <div className="team-info">
-            <img src={team.logo} alt={team.name} />
-            <div className="team-details">
-              <h2 className="title">{team.name}</h2>
-              <p>{team.town}</p>
-              <div className="team-socials">
-                {social &&
-                  social.map((social) => {
-                    return (
-                      <a target="_blank" rel="noopener noreferrer" href={social.link}>
-                        <img src={`/global-images/${social.name}.svg`} alt={social.name} />
-                      </a>
-                    );
-                  })}
+        <div className="team-banner" id={team.slug}>
+          <div className="overlay"></div>
+          <div className="team-banner-content">
+            <div className="team-info">
+              <img src={team.logo} alt={team.name} />
+              <div className="team-details">
+                <h2 className="title">{team.name}</h2>
+                <p>{team.town}</p>
+                <div className="team-socials">
+                  {social &&
+                    social.map((social) => {
+                      return (
+                        <a target="_blank" rel="noopener noreferrer" href={social.link}>
+                          <img src={`/global-images/${social.name}.svg`} alt={social.name} />
+                        </a>
+                      );
+                    })}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="team-matches-container">
+
         <div className="team-matches">
           <div style={{ width: "100%", background: "white", borderRadius: "10px", marginTop: "2rem", padding: "20px 20px" }}>
             <h2 className="sub-title" style={{ color: "#efc700", borderBottom: "1px solid #DCE0E7", paddingBottom: "10px" }}>
@@ -101,7 +100,7 @@ const Team = () => {
                             {match.sport.name} {sportIcon(match.sport.name)}
                           </p>
                         </div>
-                        <div className="match-box" style={{justifyContent: 'space-around'}}>
+                        <div className="match-box" style={{ justifyContent: "space-around" }}>
                           <div className="match-team-1">
                             <img src={match.results[0].team.logo} />
                             <p>{match.results[0].team.name.replace(/ .*/, "")}</p>
