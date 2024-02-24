@@ -91,31 +91,33 @@ const Team = () => {
               teamMatches.map((match) => {
                 return (
                   <>
-                    <div style={{ display: "flex", flexDirection: "column", margin: "1rem auto 1rem auto", width: "60%" }}>
-                      <div className="match-date-sport">
-                        <p className="match-date">
-                          {new Date(match.date).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
-                        </p>
-                        <p className="match-sport">
-                          {match.sport.name} {sportIcon(match.sport.name)}
-                        </p>
-                      </div>
-                      <div className="match-box">
-                        <div className="match-team-1">
-                          <img src={match.results[0].team.logo} />
-                          <p>{match.results[0].team.name.replace(/ .*/, "")}</p>
-                        </div>
-                        <div className="match-score">
-                          <p>
-                            {match.results[0].score}-{match.results[1].score}
+                    <div style={{ display: "flex", flexDirection: "column", margin: "1rem auto 1rem auto", width: "100%" }}>
+                      <div>
+                        <div className="match-date-sport">
+                          <p className="match-date">
+                            {new Date(match.date).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
                           </p>
-                          <Link to={`/`} className="match-link">
-                            Learn More
-                          </Link>
+                          <p className="match-sport">
+                            {match.sport.name} {sportIcon(match.sport.name)}
+                          </p>
                         </div>
-                        <div className="match-team-2">
-                          <img src={match.results[1].team.logo} />
-                          <p>{match.results[1].team.name.replace(/ .*/, "")}</p>
+                        <div className="match-box" style={{justifyContent: 'space-around'}}>
+                          <div className="match-team-1">
+                            <img src={match.results[0].team.logo} />
+                            <p>{match.results[0].team.name.replace(/ .*/, "")}</p>
+                          </div>
+                          <div className="match-score">
+                            <p>
+                              {match.results[0].score}-{match.results[1].score}
+                            </p>
+                            <Link to={`/`} className="match-link">
+                              Learn More
+                            </Link>
+                          </div>
+                          <div className="match-team-2">
+                            <img src={match.results[1].team.logo} />
+                            <p>{match.results[1].team.name.replace(/ .*/, "")}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
