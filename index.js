@@ -10,6 +10,7 @@ const sportCtrl = require('./controllers/sports');
 const matchCtrl = require('./controllers/matches');
 const cookieParser = require('cookie-parser');
 const { userVerification } = require('./middleware/AuthMiddleware');
+const { auth } = require('./middleware/Auth');
 
 // Connect to MongoDB
 const connectMongo = async () => {
@@ -27,7 +28,13 @@ const connectMongo = async () => {
     }
 }
 
-app.use(cors())
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -36,6 +43,8 @@ app.get('/api/users', userCtrl.getUsers)
 app.post('/api/login', userCtrl.login)
 app.post('/api/signup', userCtrl.signup)
 app.post('/api', userVerification)
+app.post('/api/new-article', auth, postCtrl.createPost)
+// app.delete('/api/delete-article/:id', auth, postCtrl.deletePost)
 app.post('/api/new-team', teamCtrl.newTeam)
 app.post('/api/new-sport', sportCtrl.newSport)
 app.post('/api/new-match', matchCtrl.newMatch)

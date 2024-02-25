@@ -308,9 +308,46 @@ article:hover {
   border-bottom: 6px solid #BFA07F;
 }
 
+#rockmart-yellow-jackets {
+  background: linear-gradient(180deg, #D0C780 0%, #83782b 100%);
+  border-bottom: 6px solid #111111;
+}
+
+#calhoun-yellow-jackets {
+  background: linear-gradient(180deg, #D0C780 0%, #83782b 100%);
+  border-bottom: 6px solid #111111;
+}
+
+#rome-wolves {
+  background: linear-gradient(180deg, #CF112B 0%, #7f0c1c 100%);
+  border-bottom: 6px solid #C8B783;
+}
+
+#dalton-catamounts {
+  background: linear-gradient(180deg, #D30B07 0%, rgb(87, 8, 18) 100%);
+  border-bottom: 6px solid white;
+}
+
+#cedartown-bulldogs {
+  background: linear-gradient(180deg, #D30B07 0%, rgb(87, 8, 18) 100%);
+  border-bottom: 6px solid white;
+}
+
+#redbud-athletics {
+  background: linear-gradient(180deg, #B10E13 0%, #7a090d 100%);
+  border-bottom: 6px solid black;
+}
+
+
 .team-info {
   display: flex;
   gap: 40px;
+}
+
+.team-info .team-logo{
+  width: 110px;
+  height: 110px;
+  aspect-ratio: 1;
 }
 
 .team-socials {

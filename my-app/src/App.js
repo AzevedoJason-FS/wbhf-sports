@@ -5,6 +5,7 @@ import ErrorPage from "./error-page";
 const HomePage = lazy(() => import("./routes/Home.jsx"));
 const LoginPage = lazy(() => import("./routes/Login.jsx"));
 const DashboardPage = lazy(() => import("./routes/Dashboard.jsx"));
+const DashboardCreate = lazy(() => import("./routes/DashboardCreate.jsx"));
 const TeamPage = lazy(() => import("./routes/Team.jsx"));
 const ArticlePage = lazy(() => import("./routes/Article.jsx"));
 
@@ -13,7 +14,6 @@ const App = () => {
     <div className="app">
       <Routes>
         <Route path="*" element={<ErrorPage />} />
-
         <Route
           path="/"
           element={
@@ -56,6 +56,21 @@ const App = () => {
                 </div>
               }>
               <DashboardPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard/create-article"
+          element={
+            <Suspense
+              fallback={
+                <div className="loader-container">
+                  <div className="loader-container-inner">
+                    <p>Loading</p>
+                  </div>
+                </div>
+              }>
+              <DashboardCreate />
             </Suspense>
           }
         />

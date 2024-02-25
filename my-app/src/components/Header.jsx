@@ -17,9 +17,6 @@ const Header = () => {
           Schedule
         </Link>
         <Link to={`/`} className="nav-link">
-          Standings
-        </Link>
-        <Link to={`/`} className="nav-link">
           B.G.M.S.A.A
         </Link>
         <Link to={`/`} className="nav-link">

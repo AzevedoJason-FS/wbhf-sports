@@ -21,13 +21,9 @@ const postSchema = mongoose.Schema({
         type: Date,
         default: new Date()
     },
-    teams:[
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "teams",
-          required: true
-        }
-      ],
+    img: {
+        type: String,
+    }
 });
 
 module.exports = mongoose.model("Posts", postSchema);

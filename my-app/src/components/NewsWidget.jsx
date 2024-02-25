@@ -32,7 +32,7 @@ const NewsWidget = () => {
                       </p>
                       <h2>{post.title}</h2>
                       <p>{post.body}</p>
-                      <p style={{ color: "#6b6b6b" }}>
+                      <p style={{ color: "#aeaeae" }}>
                         {new Date(post.created_at).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
                       </p>
                     </div>

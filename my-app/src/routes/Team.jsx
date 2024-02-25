@@ -62,7 +62,7 @@ const Team = () => {
           <div className="overlay"></div>
           <div className="team-banner-content">
             <div className="team-info">
-              <img src={team.logo} alt={team.name} />
+              <img src={team.logo} alt={team.name} className="team-logo"/>
               <div className="team-details">
                 <h2 className="title">{team.name}</h2>
                 <p>{team.town}</p>

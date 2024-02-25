@@ -51,33 +51,33 @@ const signup = async (req, res, next) => {
 };
 
 const login = async (req, res) => {
-    try{
-        //get credentials
-        const {name, password} = req.body
+  try{
+      //get credentials
+      const {name, password} = req.body
 
-        //check email
-        const user = await Users.findOne({name})
-        if(!user) return res.status(400).json({message: 'This user is not registered'})
+      //check email
+      const user = await Users.findOne({name})
+      if(!user) return res.status(400).json('This user is not registered')
 
-        //check password
-        const isMatch = await bcrypt.compare(password, user.password)
-        if(!isMatch) return res.status(400).json({message: 'This password is incorrect'})
+      //check password
+      const isMatch = await bcrypt.compare(password, user.password)
+      if(!isMatch) return res.status(400).json('This password is incorrect')
 
-        // Creating refresh token not that expiry of refresh 
-        const token = createSecretToken(user._id)
+      // Creating refresh token not that expiry of refresh 
+      const token = createSecretToken(user._id)
 
-        // Successful, assigning refresh token in http-only cookie 
-        res.cookie('token', token, { 
-            httpOnly: false, 
-            withCredentials: true
-        })
+      // Successful, assigning refresh token in http-only cookie 
+      res.cookie('token', token, { 
+          httpOnly: false, 
+          withCredentials: true
+      })
 
-        //signin success
-        res.status(201).json({message: 'User logged in successfully'})
-        
-    }catch(err){
-        res.status(500).json({message: err.message })
-    }
+      //signin success
+      res.status(201).json(true)
+      
+  }catch(err){
+      res.status(500).json({message: err.message })
+  }
 };
 
 module.exports = { getUsers, signup, login };
