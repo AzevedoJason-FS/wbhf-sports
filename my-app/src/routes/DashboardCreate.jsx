@@ -37,6 +37,8 @@ const DashboardCreate = () => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
+        multiple: false,
+        maxImageFileSize: 5000000,
         cloudName: "dbqqobh8l",
         uploadPreset: "ml_default",
       },
@@ -105,7 +107,7 @@ const DashboardCreate = () => {
         <Link to={`/dashboard`} style={{ color: "#0083bf", marginBottom: "2rem" }}>
           Return to dashboard
         </Link>
-        <h2 className="title">Create Article</h2>
+        <h2 className="title" style={{color: '#0e1a44'}}>Create New Article</h2>
         <div className="input-box">
           <label htmlFor="img" className="label-title">
             Image
@@ -118,13 +120,13 @@ const DashboardCreate = () => {
         <form onSubmit={handleSubmit}>
           <div className="input-box">
             <label htmlFor="name" className="label-title">
-              Location
+              Sport
             </label>
             <input
               type="location"
               name="location"
               value={location}
-              placeholder="location where article takes place"
+              placeholder="Sport in focus"
               onChange={handleOnChange}
               required
             />
@@ -141,7 +143,7 @@ const DashboardCreate = () => {
             </label>
             <textarea type="body" name="body" value={body} placeholder="article body" onChange={handleOnChange} required rows="8" />
           </div>
-          <button type="submit">Create Article</button>
+          <button type="submit">Create New Article</button>
         </form>
         <ToastContainer
           position="top-right"

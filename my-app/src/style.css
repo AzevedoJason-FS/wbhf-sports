@@ -8,6 +8,18 @@ body {
   background-color: #0e1a44;
 }
 
+textarea{
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  border: 1px solid #c9cacc;
+  color: #303030;
+  font-size: 18px;
+}
+
+textarea::placeholder{
+  color: #0000003e;
+}
+
 header {
   background-color: #0e1a44;
 }
@@ -413,4 +425,85 @@ article:hover {
   border-radius: 4px;
   background-color: #efc700;
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 3rem;
+  padding: 40px 20px;
+  margin-bottom: 6rem;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.input-box{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+form{
+  width: 80%;
+}
+
+input{
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #c9cacc;
+}
+
+input::placeholder{
+  color: #0000003e;
+}
+
+.label-title{
+  font-size: 24px;
+  font-weight: 600;
+  color: #efc700;
+  letter-spacing: -0.96px;
+  margin: 1rem 0 4px 0;
+}
+
+ form button{
+  background: #efc700;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.img-upload-btn{
+  background: #efc700;
+  border: none;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.img-upload-btn:hover{
+  background-color: #d1ae00;
+}
+
+button{
+  background: none;
+	color: inherit;
+	border: none;
+  border: 1px solid #c9cacc;
+	padding: 0 40px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  transition: all 0.2s linear;
+}
+
+form button:hover{
+  background-color: #d1ae00;
 }
