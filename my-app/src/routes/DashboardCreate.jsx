@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { ToastContainer, toast } from "react-toastify";
+import Editor from 'react-simple-wysiwyg';
 import { config } from "../constants";
 const _ = require("lodash");
 
@@ -141,7 +142,8 @@ const DashboardCreate = () => {
             <label htmlFor="body" className="label-title">
               Body
             </label>
-            <textarea type="body" name="body" value={body} placeholder="article body" onChange={handleOnChange} required rows="8" />
+            {/* <textarea type="body" name="body" value={body} placeholder="article body" onChange={handleOnChange} required rows="8" /> */}
+            <Editor name="body" value={body} onChange={handleOnChange} />
           </div>
           <button type="submit">Create New Article</button>
         </form>

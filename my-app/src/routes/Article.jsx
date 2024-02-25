@@ -44,7 +44,7 @@ const Article = () => {
               <p style={{ color: "#a7a7a7" }}>
                 {new Date(article.created_at).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
               </p>
-              <p>{article.body}</p>
+              <p dangerouslySetInnerHTML={{__html: article.body}} />
               {/* <div className="social-share-container">
               <SocialShare url={`https://www.facebook.com/sharer/sharer.php?u=${baseURL}`} img="/icons/facebook.svg" />
               <SocialShare url={`https://twitter.com/intent/tweet?url=&text=&via=${baseURL}`} img="/icons/twitter.svg" />

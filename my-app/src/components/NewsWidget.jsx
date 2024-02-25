@@ -14,6 +14,18 @@ const NewsWidget = () => {
     });
   }, [url]);
 
+  function removeTags(str) {
+    if ((str === null) || (str === ''))
+        return false;
+    else
+        str = str.toString();
+ 
+    // Regular expression to identify HTML tags in
+    // the input string. Replacing the identified
+    // HTML tag with a null string.
+    return str.replace(/(<([^>]+)>)/ig, '');
+}
+
   return (
     <div className="news-block-widget">
         <h2 className="sub-title" style={{ color: "#efc700", borderBottom: "1px solid #DCE0E7", paddingBottom: "4px" }}>
@@ -31,7 +43,7 @@ const NewsWidget = () => {
                         {post.location}
                       </p>
                       <h2>{post.title}</h2>
-                      <p>{post.body}</p>
+                      <p dangerouslySetInnerHTML={{__html: removeTags(post.body)}} />
                       <p style={{ color: "#aeaeae" }}>
                         {new Date(post.created_at).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
                       </p>

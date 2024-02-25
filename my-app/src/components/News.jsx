@@ -14,6 +14,18 @@ const News = () => {
     });
   }, [url]);
 
+  function removeTags(str) {
+    if ((str === null) || (str === ''))
+        return false;
+    else
+        str = str.toString();
+ 
+    // Regular expression to identify HTML tags in
+    // the input string. Replacing the identified
+    // HTML tag with a null string.
+    return str.replace(/(<([^>]+)>)/ig, '');
+}
+
   return (
     <>
       <div className="title-box">
@@ -33,7 +45,7 @@ const News = () => {
                       <div className="article-body">
                         <p className="location-box">{post.location}</p>
                         <h2>{post.title}</h2>
-                        <p style={{color: '#858E9C'}}>{post.body}</p>
+                        <p style={{color: '#858E9C'}} dangerouslySetInnerHTML={{__html: removeTags(post.body)}} />
                         <p style={{color: '#C2C7CF'}}>{new Date(post.created_at).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}</p>
                       </div>
                     </article>
