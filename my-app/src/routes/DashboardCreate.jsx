@@ -45,7 +45,7 @@ const DashboardCreate = () => {
       },
       function (error, result) {
         if (result.event === "success") {
-          setImg(result.info.secure_url);
+          setImg(`https://res.cloudinary.com/dbqqobh8l/image/upload/v1709008238/${result.info.public_id}.webp`);
         }
       }
     );
