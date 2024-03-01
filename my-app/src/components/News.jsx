@@ -29,7 +29,7 @@ const News = () => {
   return (
     <>
       <div className="title-box">
-        <h2 className="title" style={{ color: "white" }}>
+        <h2 className="sub-title" style={{ color: "white" }}>
           Latest Sports News
         </h2>
       </div>

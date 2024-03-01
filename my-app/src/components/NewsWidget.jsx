@@ -43,7 +43,7 @@ const NewsWidget = () => {
                         {post.location}
                       </p>
                       <h2>{post.title}</h2>
-                      <p dangerouslySetInnerHTML={{__html: removeTags(post.body)}} />
+                      <p style={{color: '#858E9C'}} dangerouslySetInnerHTML={{__html: removeTags(post.body)}} />
                       <p style={{ color: "#aeaeae" }}>
                         {new Date(post.created_at).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
                       </p>

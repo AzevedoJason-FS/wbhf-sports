@@ -142,7 +142,7 @@ article:hover {
 }
 
 .title {
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 700;
   margin: 0;
 }
@@ -191,6 +191,7 @@ article:hover {
 
 .article-widget .article-body h2 {
   font-size: 18px;
+  text-transform: uppercase;
 }
 
 .sponsor-block {

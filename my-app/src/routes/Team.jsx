@@ -51,6 +51,8 @@ const Team = () => {
         return "🏀";
       case "Tennis":
         return "🎾";
+      default:
+        return ""
     }
   };
 
@@ -102,7 +104,7 @@ const Team = () => {
                         </div>
                         <div className="match-box" style={{ justifyContent: "space-around" }}>
                           <div className="match-team-1">
-                            <img src={match.results[0].team.logo} />
+                            <img src={match.results[0].team.logo} alt={match.results[0].team.name}/>
                             <p>{match.results[0].team.name.replace(/ .*/, "")}</p>
                           </div>
                           <div className="match-score">
@@ -114,7 +116,7 @@ const Team = () => {
                             </Link>
                           </div>
                           <div className="match-team-2">
-                            <img src={match.results[1].team.logo} />
+                            <img src={match.results[1].team.logo} alt={match.results[1].team.name}/>
                             <p>{match.results[1].team.name.replace(/ .*/, "")}</p>
                           </div>
                         </div>
