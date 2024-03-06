@@ -62,7 +62,7 @@ const News = () => {
             {posts &&
               posts.map((post) => {
                 return (
-                  <Link to={`/article/${post.slug}`} className="article-link" key={post.slug}>
+                  <Link to={`/article/${post.slug}`} className="article-link" key={post._id}>
                     <article>
                       <img src={post.img} alt="tennis" className="article-img" />
                       <div className="article-body">
