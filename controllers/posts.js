@@ -1,19 +1,32 @@
 const mongoose = require("mongoose");
 const Posts = require("../models/post");
 
-const getPosts = (req, res) => {
+
+const getPosts = async (req, res) => {
+  const page = parseInt(req.query.page);
+  const pageSize = parseInt(req.query.pageSize);
+
+  // Calculate the start and end indexes for the requested page
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = page * pageSize;
+
   try {
     Posts.find()
-      .lean()
       .sort({ created_at: -1 })
       .then((result) => {
-        res.status(200).json(result);
+        // Slice the products array based on the indexes
+        const paginatedProducts = result.slice(startIndex, endIndex);
+
+        // Calculate the total number of pages
+        const totalPages = Math.ceil(result.length / pageSize);
+
+        res.status(200).json({ paginatedProducts, totalPages });
       })
       .catch((err) => {
-        res.status(500).json({ message: err });
+        res.status(500).json({ message: err.message });
       });
   } catch (err) {
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 };
 
