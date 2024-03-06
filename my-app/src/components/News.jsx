@@ -6,25 +6,48 @@ import { config } from "../constants";
 
 const News = () => {
   const [posts, setPosts] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const url = config.url.API_URL;
 
-  useEffect(() => {
-    axios.get(url + "/api/posts").then((response) => {
-      setPosts(response.data);
-    });
-  }, [url]);
+  const fetchPosts = async (page) => {
+    try {
+      const response = await axios.get(`${url}/api/posts?page=${page}&pageSize=5`);
+      const { posts, totalPages } = response.data;
+      setPosts(posts);
+      setTotalPages(totalPages);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  function removeTags(str) {
-    if ((str === null) || (str === ''))
-        return false;
-    else
-        str = str.toString();
- 
+  useEffect(() => {
+    fetchPosts(currentPage);
+  }, [currentPage]);
+
+  const removeTags = (str) => {
+    if (str === null || str === "") return false;
+    else str = str.toString();
+
     // Regular expression to identify HTML tags in
     // the input string. Replacing the identified
     // HTML tag with a null string.
-    return str.replace(/(<([^>]+)>)/ig, '');
-}
+    return str.replace(/(<([^>]+)>)/gi, "");
+  }
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage- 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
 
   return (
     <>
@@ -56,6 +79,13 @@ const News = () => {
         ) : (
           <p>nothing</p>
         )}
+          {/* Pagination controls */}
+      <button onClick={handlePrevPage} disabled={currentPage === 1}>
+        Previous Page
+      </button>
+      <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+        Next Page
+      </button>
       </div>
     </>
   );

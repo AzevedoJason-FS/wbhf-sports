@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Posts = require("../models/post");
 
-
 const getPosts = async (req, res) => {
   const page = parseInt(req.query.page);
   const pageSize = parseInt(req.query.pageSize);
@@ -15,12 +14,12 @@ const getPosts = async (req, res) => {
       .sort({ created_at: -1 })
       .then((result) => {
         // Slice the products array based on the indexes
-        const paginatedProducts = result.slice(startIndex, endIndex);
+        const posts = result.slice(startIndex, endIndex);
 
         // Calculate the total number of pages
         const totalPages = Math.ceil(result.length / pageSize);
 
-        res.status(200).json({ paginatedProducts, totalPages });
+        res.status(200).json({ posts, totalPages });
       })
       .catch((err) => {
         res.status(500).json({ message: err.message });
