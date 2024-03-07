@@ -35,7 +35,7 @@ const NewsWidget = () => {
 
   return (
     <div className="news-block-widget">
-        <h2 className="sub-title" style={{ color: "#efc700", borderBottom: "1px solid #DCE0E7", paddingBottom: "4px" }}>
+        <h2 className="sub-title" style={{ color: "#efc700" }}>
           Other Articles
         </h2>
       {posts && posts.length > 0 ? (
@@ -45,7 +45,7 @@ const NewsWidget = () => {
               return (
                 <Link to={`/article/${post.slug}`} className="article-link" key={post.slug}>
                   <article className="article-widget">
-                    <div className="article-body" style={{borderBottom: '1px solid #dce0e7'}}>
+                    <div className="article-body" >
                       <p className="location-box" style={{ backgroundColor: "#efc700" }}>
                         {post.location}
                       </p>
@@ -61,7 +61,7 @@ const NewsWidget = () => {
             })}
         </>
       ) : (
-        <p>nothing</p>
+        <p>Loading</p>
       )}
     </div>
   );

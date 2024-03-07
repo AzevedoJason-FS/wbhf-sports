@@ -64,7 +64,7 @@ header p {
 }
 
 .right-column {
-  width: 38%;
+  width: 32%;
   gap: 10px;
   display: flex;
   flex-direction: column;
@@ -76,11 +76,13 @@ article {
   gap: 40px;
   margin-bottom: 10px;
   padding-right: 10px;
-  transition: all 0.2s linear;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #EEEEEE;
 }
 
 .article-body {
   flex: 1;
+  transition: all 0.2s linear;
   min-width: 0; /* or some value */
 }
 
@@ -121,7 +123,7 @@ article .date {
   margin-top: 1rem;
 }
 
-article:hover {
+.article-body:hover {
   background-color: #0083bf4c;
   cursor: pointer;
 }
@@ -279,6 +281,7 @@ article:hover {
 
 .match-sport {
   color: #0e1a44;
+  font-weight: 400;
 }
 
 .team-banner {
@@ -507,4 +510,23 @@ button{
 
 form button:hover{
   background-color: #d1ae00;
+}
+
+.page-btns-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 4rem 0 0 0;
+  gap: 20px;
+}
+
+.page-btn{
+  border-radius: 100px;
+  padding: 0px 20px;
+  border: 1px solid #E4E4E4;
+}
+
+.page-btn:hover{
+  background-color: #0e1a44;
+  color: white;
 }

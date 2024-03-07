@@ -35,7 +35,7 @@ const UpcomingScores = () => {
   };
 
   return (
-    <div className="upcoming-widget" style={{ marginTop: "10px" }}>
+    <div className="upcoming-widget">
       <div className="upcoming-widget-content">
         <h2 className="sub-title" style={{ color: "#efc700", borderBottom: "1px solid #DCE0E7", paddingBottom: "4px" }}>
           Upcoming Matches
@@ -73,7 +73,7 @@ const UpcomingScores = () => {
               })}
           </>
         ) : (
-          <p>nothing</p>
+          <p>Loading</p>
         )}
       </div>
     </div>

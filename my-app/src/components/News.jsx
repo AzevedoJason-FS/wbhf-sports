@@ -77,15 +77,17 @@ const News = () => {
               })}
           </>
         ) : (
-          <p>nothing</p>
+          <p>Loading</p>
         )}
-          {/* Pagination controls */}
-      <button onClick={handlePrevPage} disabled={currentPage === 1}>
+      <div className="page-btns-container">
+      <button onClick={handlePrevPage} disabled={currentPage === 1} className="page-btn">
         Previous Page
       </button>
-      <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+      <p>{currentPage}</p>
+      <button onClick={handleNextPage} disabled={currentPage === totalPages} className="page-btn">
         Next Page
       </button>
+      </div>
       </div>
     </>
   );

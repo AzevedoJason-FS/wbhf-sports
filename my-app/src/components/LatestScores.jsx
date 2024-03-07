@@ -77,7 +77,7 @@ const LatestScores = () => {
               })}
           </>
         ) : (
-          <p>nothing</p>
+          <p>Loading</p>
         )}
       </div>
     </div>
