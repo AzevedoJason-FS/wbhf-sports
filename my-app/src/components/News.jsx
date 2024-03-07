@@ -10,21 +10,21 @@ const News = () => {
   const [totalPages, setTotalPages] = useState(0);
   const url = config.url.API_URL;
 
-  const fetchPosts = async (page) => {
-    try {
-      const response = await axios.get(`${url}/api/posts?page=${page}&pageSize=5`);
-      const { posts, totalPages } = response.data;
-      setPosts(posts);
-      setTotalPages(totalPages);
-      console.log(response.data)
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchPosts = async (page) => {
+      try {
+        const response = await axios.get(`${url}/api/posts?page=${page}&pageSize=5`);
+        const { posts, totalPages } = response.data;
+        setPosts(posts);
+        setTotalPages(totalPages);
+        console.log(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
     fetchPosts(currentPage);
-  }, [currentPage]);
+  }, [currentPage, url]);
 
   const removeTags = (str) => {
     if (str === null || str === "") return false;
