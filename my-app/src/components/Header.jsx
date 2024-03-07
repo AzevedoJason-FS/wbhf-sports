@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const date = new Date();
   return (
     <header>
         <div className="header-content">

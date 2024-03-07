@@ -40,7 +40,7 @@ const Article = () => {
               <h2 className="title" style={{ margin: "1rem 0 1rem 0" }}>
                 {article.title}
               </h2>
-              <img src={article.img} />
+              <img src={article.img} alt={article.title}/>
               <p style={{ color: "#a7a7a7" }}>
                 {new Date(article.created_at).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
               </p>

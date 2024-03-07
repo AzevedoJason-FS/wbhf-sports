@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import { useNavigate } from 'react-router'
 import axios from "axios";
 import { config } from "../constants";
@@ -7,7 +7,6 @@ import { config } from "../constants";
 const UpcomingScores = () => {
   const [matches, setMatches] = useState();
   const url = config.url.API_URL;
-  const date = new Date();
 
   useEffect(() => {
     axios.get(url + "/api/upcoming-matches").then((response) => {
@@ -30,6 +29,8 @@ const UpcomingScores = () => {
         return "🏀";
       case "Tennis":
         return "🎾";
+      default:
+        return "";
     }
   };
 
@@ -55,7 +56,7 @@ const UpcomingScores = () => {
                     </div>
                     <div className="match-box">
                       <div className="match-team-1">
-                        <img src={match.results[0].team.logo} />
+                        <img src={match.results[0].team.logo} alt={match.results[0].team.name}/>
                         <p>{match.results[0].team.name.replace(/ .*/, "")}</p>
                       </div>
                       <div className="match-score">
@@ -63,7 +64,7 @@ const UpcomingScores = () => {
                         <p className="match-link">{match.time}</p>
                       </div>
                       <div className="match-team-2">
-                        <img src={match.results[1].team.logo} />
+                        <img src={match.results[1].team.logo} alt={match.results[1].team.name}/>
                         <p>{match.results[1].team.name.replace(/ .*/, "")}</p>
                       </div>
                     </div>

@@ -8,15 +8,13 @@ import Header from "../components/Header";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
-  const [name, setName] = useState("");
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
         navigate("/login");
       }
       const { data } = await axios.post("/api", {}, { withCredentials: true });
-      const { status, user } = data;
-      setName(user);
+      const { status } = data;
       return !status ? (removeCookie("token"), navigate("/login")) : <></>;
     };
     verifyCookie();

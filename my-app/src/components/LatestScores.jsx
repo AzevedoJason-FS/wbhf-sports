@@ -7,7 +7,6 @@ import { config } from "../constants";
 const LatestScores = () => {
   const [matches, setMatches] = useState();
   const url = config.url.API_URL;
-  const date = new Date();
 
   useEffect(() => {
     axios.get(url + "/api/finished-matches").then((response) => {
@@ -30,6 +29,8 @@ const LatestScores = () => {
         return "🏀";
       case "Tennis":
         return "🎾";
+      default: 
+        return "";
     }
   };
 
@@ -55,7 +56,7 @@ const LatestScores = () => {
                     </div>
                     <div className="match-box">
                       <div className="match-team-1">
-                        <img src={match.results[0].team.logo} />
+                        <img src={match.results[0].team.logo} alt={match.results[0].team.name}/>
                         <p>{match.results[0].team.name.replace(/ .*/, "")}</p>
                       </div>
                       <div className="match-score">
@@ -67,7 +68,7 @@ const LatestScores = () => {
                         </Link>
                       </div>
                       <div className="match-team-2">
-                        <img src={match.results[1].team.logo} />
+                        <img src={match.results[1].team.logo} alt={match.results[1].team.name}/>
                         <p>{match.results[1].team.name.replace(/ .*/, "")}</p>
                       </div>
                     </div>
