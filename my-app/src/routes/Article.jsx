@@ -31,19 +31,17 @@ const Article = () => {
       <div className="container">
         <Header />
         <div className="main">
-          <div style={{ width: "100%" }}>
+        <div style={{ width: "74%" }}>
             <div className="sponsor-block">
               <img src="/global-images/banner.jpeg" alt="bank" />
             </div>
             <div className="news-article">
             <Link to={`/`} style={{color: '#0083bf', marginBottom: '10px'}}>Return Home</Link>
-              <h2 className="title" style={{ margin: "1rem 0 1rem 0" }}>
+              <h2 className="title" style={{ margin: "1rem 0 1rem 0", fontWeight: '800', fontSize: '32px' }}>
                 {article.title}
               </h2>
+              <p style={{color: "#a7a7a7"}}>Published {new Date(article.created_at).toLocaleDateString("en-us", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>
               <img src={article.img} alt={article.title}/>
-              <p style={{ color: "#a7a7a7" }}>
-                {new Date(article.created_at).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
-              </p>
               <p dangerouslySetInnerHTML={{__html: article.body}} />
               {/* <div className="social-share-container">
               <SocialShare url={`https://www.facebook.com/sharer/sharer.php?u=${baseURL}`} img="/icons/facebook.svg" />

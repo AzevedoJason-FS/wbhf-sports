@@ -9,9 +9,16 @@ const NewsWidget = () => {
   const url = config.url.API_URL;
 
   useEffect(() => {
-    axios.get(url + "/api/posts").then((response) => {
-      setPosts(response.data);
-    });
+    const fetchPosts = async (page) => {
+      try {
+        const response = await axios.get(`${url}/api/posts?page=${page}&pageSize=4`);
+        const { posts } = response.data;
+        setPosts(posts);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPosts(1)
   }, [url]);
 
   function removeTags(str) {
