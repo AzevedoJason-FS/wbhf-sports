@@ -18,7 +18,6 @@ const Home = () => {
           </div>
           <div className="right-column">
             <LatestScores />
-            <UpcomingScores />
           </div>
         </div>
       </div>

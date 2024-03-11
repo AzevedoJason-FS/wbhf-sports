@@ -3,7 +3,6 @@ import { config } from "../constants";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import Weather from "../components/Weather";
 import Header from "../components/Header";
 import LatestScores from "../components/LatestScores";
 // import SocialShare from "../components/SocialShare";
@@ -40,13 +39,13 @@ const Article = () => {
               <h2 className="title" style={{ margin: "1rem 0 1rem 0", fontWeight: '800', fontSize: '32px' }}>
                 {article.title}
               </h2>
-              {!article.created_at ? <></> : (<p style={{color: "#a7a7a7"}}>Published {new Date(article.created_at).toLocaleDateString("en-us", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>)}
+              {!article.created_at ? <></> : (<p style={{color: "#a7a7a7",}}>Published {new Date(article.created_at).toLocaleDateString("en-us", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>)}
               <img src={article.img} alt={article.title}/>
               <p dangerouslySetInnerHTML={{__html: article.body}} />
               {/* <div className="social-share-container">
               <SocialShare url={`https://www.facebook.com/sharer/sharer.php?u=${baseURL}`} img="/icons/facebook.svg" />
-              <SocialShare url={`https://twitter.com/intent/tweet?url=&text=&via=${baseURL}`} img="/icons/twitter.svg" />
-              <SocialShare url={`https://www.linkedin.com/shareArticle?url=&title=${baseURL}`} img="/icons/linkedin.svg" />
+              <SocialShare url={`https://twitter.com/intent/post?url=${baseURL}`} img="/icons/twitter.svg" />
+              <SocialShare url={`https://www.linkedin.com/sharing/share-offsite/?url=${baseURL}`} img="/icons/linkedin.svg" />
               </div> */}
             </div>
           </div>

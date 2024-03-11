@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { React, Suspense, lazy } from "react";
 import ErrorPage from "./error-page";
+import { Loader } from "./components/Loader.jsx";
 
 const HomePage = lazy(() => import("./routes/Home.jsx"));
 const LoginPage = lazy(() => import("./routes/Login.jsx"));
@@ -21,7 +22,7 @@ const App = () => {
               fallback={
                 <div className="loader-container">
                   <div className="loader-container-inner">
-                    <p>Loading</p>
+                    <Loader />
                   </div>
                 </div>
               }>
@@ -36,7 +37,7 @@ const App = () => {
               fallback={
                 <div className="loader-container">
                   <div className="loader-container-inner">
-                    <p>Loading</p>
+                  <Loader />
                   </div>
                 </div>
               }>
@@ -51,7 +52,7 @@ const App = () => {
               fallback={
                 <div className="loader-container">
                   <div className="loader-container-inner">
-                    <p>Loading</p>
+                  <Loader />
                   </div>
                 </div>
               }>
@@ -66,7 +67,7 @@ const App = () => {
               fallback={
                 <div className="loader-container">
                   <div className="loader-container-inner">
-                    <p>Loading</p>
+                  <Loader />
                   </div>
                 </div>
               }>
@@ -81,7 +82,7 @@ const App = () => {
               fallback={
                 <div className="loader-container">
                   <div className="loader-container-inner">
-                    <p>Loading</p>
+                  <Loader />
                   </div>
                 </div>
               }>
@@ -96,7 +97,7 @@ const App = () => {
               fallback={
                 <div className="loader-container">
                   <div className="loader-container-inner">
-                    <p>Loading</p>
+                  <Loader />
                   </div>
                 </div>
               }>

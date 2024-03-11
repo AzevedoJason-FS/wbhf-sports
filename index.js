@@ -29,8 +29,7 @@ const connectMongo = async () => {
 }
 
 const corsOptions ={
-    // origin:'http://localhost:3000', 
-    origin: 'https://bartow-sports-zone.netlify.app',
+    origin: ['http://localhost:3000', 'https://bartow-sports-zone.netlify.app'],
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }

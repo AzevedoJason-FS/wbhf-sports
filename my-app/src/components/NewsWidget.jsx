@@ -21,18 +21,6 @@ const NewsWidget = () => {
     fetchPosts(1)
   }, [url]);
 
-  function removeTags(str) {
-    if ((str === null) || (str === ''))
-        return false;
-    else
-        str = str.toString();
- 
-    // Regular expression to identify HTML tags in
-    // the input string. Replacing the identified
-    // HTML tag with a null string.
-    return str.replace(/(<([^>]+)>)/ig, '');
-}
-
   return (
     <div className="news-block-widget">
         <h2 className="sub-title" style={{ color: "#efc700" }}>
@@ -45,12 +33,11 @@ const NewsWidget = () => {
               return (
                 <Link to={`/article/${post.slug}`} className="article-link" key={post.slug}>
                   <article className="article-widget">
-                    <div className="article-body" >
+                    <div className="article-body" style={{padding: '10px'}}>
                       <p className="location-box" style={{ backgroundColor: "#efc700" }}>
                         {post.location}
                       </p>
                       <h2>{post.title}</h2>
-                      <p style={{color: '#858E9C'}} dangerouslySetInnerHTML={{__html: removeTags(post.body)}} />
                       <p style={{ color: "#aeaeae" }}>
                         {new Date(post.created_at).toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric" })}
                       </p>

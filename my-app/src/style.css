@@ -61,6 +61,7 @@ header p {
   max-width: 1400px;
   margin: 2rem auto;
   gap: 10px;
+  border-radius: 10px;
 }
 
 .right-column {
@@ -82,6 +83,7 @@ article {
 
 .article-body {
   flex: 1;
+  padding: 20px;
   transition: all 0.2s linear;
   min-width: 0; /* or some value */
 }
@@ -124,7 +126,7 @@ article .date {
 }
 
 .article-body:hover {
-  background-color: #0083bf4c;
+  background-color: rgba(228, 228, 228, 0.508);
   cursor: pointer;
 }
 
@@ -210,10 +212,8 @@ article .date {
 .latest-widget,
 .upcoming-widget {
   background-color: white;
-  border-radius: 10px;
   padding: 20px 20px;
-  max-height: 400px;
-  overflow: auto;
+  border-radius: 10px;
   scroll-padding-bottom: 2em;
 }
 
@@ -256,7 +256,7 @@ article .date {
 
 .match-score p {
   color: #0e1a44;
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 700;
   margin: 0;
 }
@@ -266,6 +266,20 @@ article .date {
   margin-top: 4px !important;
   font-size: 15px !important;
   font-weight: 400 !important;
+}
+
+.team-link{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.2s linear;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.team-link:hover{
+  background-color: #0010310f;
 }
 
 .match-date-sport {
@@ -404,7 +418,6 @@ article .date {
 }
 
 .latest-widget-content, .upcoming-widget-content{
-  max-height: 400px; 
   overflow: auto;
   padding-right: 10px;
 }

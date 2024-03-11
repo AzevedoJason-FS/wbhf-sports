@@ -3,21 +3,24 @@ import { Link } from "react-router-dom";
 // import { useNavigate } from 'react-router'
 import axios from "axios";
 import { config } from "../constants";
+import { Loader } from "./Loader";
 
 const News = () => {
   const [posts, setPosts] = useState();
+  const [spinner, setSpinner] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const url = config.url.API_URL;
 
   useEffect(() => {
     const fetchPosts = async (page) => {
+      setSpinner(true);
       try {
         const response = await axios.get(`${url}/api/posts?page=${page}&pageSize=5`);
         const { posts, totalPages } = response.data;
         setPosts(posts);
         setTotalPages(totalPages);
-        console.log(response.data)
+        setSpinner(false);
       } catch (error) {
         console.log(error);
       }
@@ -57,7 +60,9 @@ const News = () => {
         </h2>
       </div>
       <div className="news-block">
-        {posts && posts.length > 0 ? (
+      {spinner ? (
+          <Loader />
+        ) : posts && posts.length > 0 ? (
           <>
             {posts &&
               posts.map((post) => {
@@ -77,7 +82,7 @@ const News = () => {
               })}
           </>
         ) : (
-          <p>Loading</p>
+          <p>No articles could be found</p>
         )}
       <div className="page-btns-container">
       <button onClick={handlePrevPage} disabled={currentPage === 1} className="page-btn">
