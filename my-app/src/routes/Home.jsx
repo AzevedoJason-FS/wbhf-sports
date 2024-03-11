@@ -2,7 +2,6 @@ import { React } from "react";
 import Header from "../components/Header";
 import News from "../components/News";
 import LatestScores from "../components/LatestScores";
-import UpcomingScores from "../components/UpcomingMatches";
 
 const Home = () => {
   return (
