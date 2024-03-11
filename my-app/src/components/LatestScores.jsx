@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 // import { useNavigate } from 'react-router'
 import axios from "axios";
@@ -11,21 +11,35 @@ const LatestScores = () => {
   // const [currentPage, setCurrentPage] = useState(1);
   const url = config.url.API_URL;
 
-  useEffect(() => {
-    const fetchPosts = async (page) => {
-      setSpinner(true);
-      try {
-        const response = await axios.get(`${url}/api/finished-matches?page=${page}&pageSize=6`);
-        const { matches } = response.data;
-        setMatches(matches);
-        setSpinner(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchPosts(1);
+  const fetchDataMemoized = useCallback(async (page) => {
+    setSpinner(true);
+    await axios.get(`${url}/api/finished-matches?page=${page}&pageSize=6`)
+    .then((result) => {
+      setMatches(result.data.matches);
+      setSpinner(false);
+    })
   }, [url]);
+
+  useEffect(() => {
+    fetchDataMemoized(1);
+  }, [fetchDataMemoized]);
+
+
+  // useEffect(() => {
+  //   const fetchPosts = async (page) => {
+  //     setSpinner(true);
+  //     try {
+  //       const response = await axios.get(`${url}/api/finished-matches?page=${page}&pageSize=6`);
+  //       const { matches } = response.data;
+  //       setMatches(matches);
+  //       setSpinner(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchPosts(1);
+  // }, [url]);
 
   const sportIcon = (sport) => {
     switch (sport) {

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 // import { useNavigate } from 'react-router'
 import axios from "axios";
@@ -12,22 +12,36 @@ const News = () => {
   const [totalPages, setTotalPages] = useState(0);
   const url = config.url.API_URL;
 
-  useEffect(() => {
-    const fetchPosts = async (page) => {
-      setSpinner(true);
-      try {
-        const response = await axios.get(`${url}/api/posts?page=${page}&pageSize=5`);
-        const { posts, totalPages } = response.data;
-        setPosts(posts);
-        setTotalPages(totalPages);
-        setSpinner(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPosts = async (page) => {
+  //     setSpinner(true);
+  //     try {
+  //       const response = await axios.get(`${url}/api/posts?page=${page}&pageSize=5`);
+  //       const { posts, totalPages } = response.data;
+  //       setPosts(posts);
+  //       setTotalPages(totalPages);
+  //       setSpinner(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
   
-    fetchPosts(currentPage);
-  }, [currentPage, url]);
+  //   fetchPosts(currentPage);
+  // }, [currentPage, url]);
+
+  const fetchDataMemoized = useCallback(async (page) => {
+    setSpinner(true)
+    await axios.get(`${url}/api/posts?page=${page}&pageSize=5`)
+    .then((result) => {
+      setPosts(result.data.posts)
+      setTotalPages(result.data.totalPages)
+      setSpinner(false);
+    })
+  }, [url]);
+
+  useEffect(() => {
+    fetchDataMemoized(currentPage);
+  }, [fetchDataMemoized, currentPage]);
 
   const removeTags = (str) => {
     if (str === null || str === "") return false;
